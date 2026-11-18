@@ -1,10 +1,10 @@
 - JOURNAL.md includes all info about each commit so see it !!
 
-# 1. ADDED BANKO AND BARS
-- I added banko.png and bars.png
-- THESE BOTH ARE CREATED  ON piskelapp.com
-- these both were made by vraj !
-- now i am writing some code so i will try to add some features at next time
+# 3. ADDED SOUND EFFECTS 
+- NOW I HAVE ADDED SOUND EFFECTS , YOU CAN USE M TO MUTE/UNMUTE !
+- THEY ARE BROWSER BASEWD SO THERE IS NO PROBLEM OF DOWNLOAD / COPYRIGHT ISSUE !!
+- I THINK I SHOULD DO SOMETHING UNIQUE SO IT WILL BE COOL !
+- I WILL ALSO ADD A BREAKING BAR WHICH CAN BREAK AFTER 2 TO 3 SECONDS AFTER JUMPING ON IT
 
 # 2. ADDED BACKGROUND AND MADE FIRST BASIC V OF THE GAME 
 - I ADDED bg.png therer
@@ -14,3 +14,9 @@
 - NOTE : ONE OF MY TEAMMATE IN  HAVEN MADE THESE PIXEL ARTS AS FOR OUR DIFFRENT PROJECT AND THESE ARE ACTUALLY BETTER SO I USED THEM INSTEAD OF MINE BAD ONES !!
 - NOW I WILL ADD A LEVEL SYSTEM AND MORE BY HERE !!
 - MAIN FEATURE3 I WANT TO ADD IS SOUND EFFECTS !!
+
+# 1. ADDED BANKO AND BARS
+- I added banko.png and bars.png
+- THESE BOTH ARE CREATED  ON piskelapp.com
+- these both were made by vraj !
+- now i am writing some code so i will try to add some features at next time
