@@ -5,3 +5,12 @@
 - THESE BOTH ARE CREATED  ON piskelapp.com
 - these both were made by vraj !
 - now i am writing some code so i will try to add some features at next time
+
+# 2. ADDED BACKGROUND AND MADE FIRST BASIC V OF THE GAME 
+- I ADDED bg.png therer
+- I made the most basic vesion of the game 
+- now the ghame works like an OG
+- I have also maede some changes in my bars
+- NOTE : ONE OF MY TEAMMATE IN  HAVEN MADE THESE PIXEL ARTS AS FOR OUR DIFFRENT PROJECT AND THESE ARE ACTUALLY BETTER SO I USED THEM INSTEAD OF MINE BAD ONES !!
+- NOW I WILL ADD A LEVEL SYSTEM AND MORE BY HERE !!
+- MAIN FEATURE3 I WANT TO ADD IS SOUND EFFECTS !!
