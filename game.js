@@ -36,7 +36,8 @@ let ban=0
 let best=+localStorage.getItem('best')||0
 let ac
 let mute=localStorage.getItem('mute')=='1'
-let scene='title'
+let nm=localStorage.getItem('name')||''
+let scene=nm?'title':'name'
 
 const sn=v=>Math.round(v/S)*S
 const lvl=()=>Math.floor(score/10/LV)
@@ -99,6 +100,21 @@ const levelup=()=>{
 
 onkeydown=e=>{
   wake()
+
+  if(scene=='name'){
+    if(e.key=='Backspace')nm=nm.slice(0,-1)
+
+    else if(e.key=='Enter'&&nm.trim()){
+      nm=nm.trim()
+      localStorage.setItem('name',nm)
+      scene='title'
+    }
+
+    else if(e.key.length==1&&/[a-z0-9 ]/i.test(e.key)&&nm.length<10)nm+=e.key.toUpperCase()
+
+    return
+  }
+
   const k=e.key.toLowerCase()
   keys[k]=true
 
@@ -106,6 +122,8 @@ onkeydown=e=>{
     mute=!mute
     localStorage.setItem('mute',mute?'1':'0')
   }
+
+  if(k=='n'&&scene=='title')scene='name'
 
   if(e.key==' '||e.key=='Enter'){
     if(scene=='title'){
@@ -121,6 +139,18 @@ onkeyup=e=>keys[e.key.toLowerCase()]=false
 
 onpointerdown=()=>{
   wake()
+
+  if(scene=='name'){
+    const v=prompt('YOUR NAME (MAX 10)')
+
+    if(v&&v.trim()){
+      nm=v.trim().slice(0,10).toUpperCase()
+      localStorage.setItem('name',nm)
+      scene='title'
+    }
+
+    return
+  }
 
   if(scene=='title'){
     scene='play'
@@ -281,6 +311,22 @@ function draw(){
   g.fillStyle=TINT[lv%TINT.length]
   g.fillRect(0,0,c.width,c.height)
 
+  if(scene=='name'){
+    const m=c.width/2
+    const h=c.height/2
+    const big=Math.min(40,c.width/16)
+
+    g.textAlign='center'
+    g.textBaseline='top'
+
+    text('WHO ARE YOU?',m,h-big*3,big,'#ffd34d','#5a4400')
+    text(nm+(Math.floor(Date.now()/400)%2?'_':' '),m,h-big*0.5,big*0.8,'#fff','#222')
+    text('TYPE YOUR NAME, PRESS ENTER',m,h+big*1.5,12,'#aaa')
+    text('(TAP TO TYPE ON PHONE)',m,h+big*2.3,12,'#666')
+
+    return
+  }
+
   if(scene=='title'){
     const m=c.width/2
     const h=c.height/2
@@ -295,6 +341,7 @@ function draw(){
 
     if(Math.floor(Date.now()/500)%2)text('PRESS SPACE OR TAP',m,h+big*2.2,16,'#fff')
     text('BEST LEVEL '+bl()+' ('+best+')',m,h+big*3.6,12,'#aaa')
+    text('PLAYER: '+nm+'  (N TO CHANGE)',m,h+big*4.6,12,'#8cf')
 
     return
   }
@@ -328,7 +375,8 @@ function draw(){
 
   text('SCORE '+Math.floor(score/10),16,16,16,'#fff','#000')
   text('BEST LEVEL '+bl()+' ('+best+')',16,42,16,'#ffd34d','#000')
-  text('LEVEL '+(lv+1),16,68,16,'#8cf','#000')
+  text(nm,16,68,16,'#fff','#000')
+  text('LEVEL '+(lv+1),16,94,16,'#8cf','#000')
 
   g.textAlign='right'
 
@@ -361,7 +409,9 @@ function draw(){
 
     else text('BEST LEVEL '+bl()+' ('+best+')',m,h+big*1.2,16,'#ffd34d')
 
-    if(Math.floor(Date.now()/500)%2)text('PRESS SPACE OR TAP',m,h+big*2.4,16,'#fff')
+    text(nm,m,h+big*1.2+28,12,'#8cf')
+
+    if(Math.floor(Date.now()/500)%2)text('PRESS SPACE OR TAP',m,h+big*2.4+24,16,'#fff')
   }
 }
 

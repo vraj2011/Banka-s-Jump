@@ -1,4 +1,9 @@
 - JOURNAL.md includes all info about each commit so see it !!
+# 7. COMPLETED V1.0
+- NOW WE HAVE A NAME ASKING 
+- JUST FOR FORMALITY, IT ALSO STAYS ON YOUR SCREEN WHEN PLAYING.....
+
+
 # 6. ADDED TITTLE SCREEN
 - now we hgave a seperate title screen for our game
 - this looks crazy now bcz it also has a refrence image of our character
