@@ -13,6 +13,7 @@ const BREAK=30
 const LV=200
 const TINT=['rgba(0,0,0,0)','rgba(130,0,170,0.25)','rgba(0,130,130,0.25)','rgba(170,70,0,0.25)','rgba(170,0,50,0.3)']
 const F='"Press Start 2P",monospace'
+const NAME="BANKA'S JUMP"
 
 const me=new Image()
 me.src='banko.png'
@@ -28,10 +29,14 @@ document.fonts.load('16px "Press Start 2P"')
 const keys={}
 const p={w:16*S,h:16*S,x:0,y:0,vx:0,vy:0}
 
-let bars,score,dead,dir,fresh,ty,lx,lt,lv,ban
+let bars,dead,dir,fresh,ty,lx,lt
+let score=0
+let lv=0
+let ban=0
 let best=+localStorage.getItem('best')||0
 let ac
 let mute=localStorage.getItem('mute')=='1'
+let scene='title'
 
 const sn=v=>Math.round(v/S)*S
 const lvl=()=>Math.floor(score/10/LV)
@@ -102,14 +107,27 @@ onkeydown=e=>{
     localStorage.setItem('mute',mute?'1':'0')
   }
 
-  if(e.key==' '&&dead)start()
+  if(e.key==' '||e.key=='Enter'){
+    if(scene=='title'){
+      scene='play'
+      start()
+    }
+
+    else if(dead)start()
+  }
 }
 
 onkeyup=e=>keys[e.key.toLowerCase()]=false
 
 onpointerdown=()=>{
   wake()
-  if(dead)start()
+
+  if(scene=='title'){
+    scene='play'
+    start()
+  }
+
+  else if(dead)start()
 }
 
 function fill(){
@@ -263,6 +281,24 @@ function draw(){
   g.fillStyle=TINT[lv%TINT.length]
   g.fillRect(0,0,c.width,c.height)
 
+  if(scene=='title'){
+    const m=c.width/2
+    const h=c.height/2
+    const big=Math.min(56,c.width/14)
+    const bob=sn(Math.sin(Date.now()/300)*12)
+
+    g.textAlign='center'
+    g.textBaseline='top'
+
+    text(NAME,m,h-big*3,big,'#ffd34d','#5a4400')
+    g.drawImage(me,0,0,16,16,Math.round(m-48),h-48+bob,96,96)
+
+    if(Math.floor(Date.now()/500)%2)text('PRESS SPACE OR TAP',m,h+big*2.2,16,'#fff')
+    text('BEST LEVEL '+bl()+' ('+best+')',m,h+big*3.6,12,'#aaa')
+
+    return
+  }
+
   for(const b of bars){
     let bx=sn(b.x)
 
@@ -337,7 +373,7 @@ function loop(t){
   last=t
 
   while(acc>=1000/60){
-    update()
+    if(scene=='play')update()
     acc-=1000/60
   }
 
@@ -345,5 +381,4 @@ function loop(t){
   requestAnimationFrame(loop)
 }
 
-start()
 requestAnimationFrame(loop)

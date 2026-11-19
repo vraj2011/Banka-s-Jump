@@ -1,4 +1,9 @@
 - JOURNAL.md includes all info about each commit so see it !!
+# 6. ADDED TITTLE SCREEN
+- now we hgave a seperate title screen for our game
+- this looks crazy now bcz it also has a refrence image of our character
+- i am gonna add a seperate name adding feature in it, too.
+
 # 5. ADDED LEVEL SYSTEM 
 - NOW I ADDED LEVEL SYSTEM INTO THE GAME!!!!
 - LEVELS CHANGE PER 200 SCORE 
